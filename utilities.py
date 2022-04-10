@@ -88,20 +88,21 @@ class Cars(object):
             d = 'y'
             if x < y:
                 if x * 2 == y:
-                    y -= 2
+                    b -= 2
                 a = x
-                b = y
+                b = b
             if y < x:
                 if y * 2 == x:
-                    x -= 2
-                a = y
+                    a -= 2
+                a = a
                 b = x
                 c = 'y'
                 d = 'x'
             total_cars = a + b
             string = ''
-            flag = True
+            flag = True # If true -> print x else y
             for i in range(0, total_cars, 1):
+
                 if flag:
                     if a > 0:
                         string += c
@@ -121,7 +122,11 @@ class Cars(object):
                                 string += d
                                 b -= 1
                             flag = True
+            print(x<y)
+            print(y)
+            print(x*2==y)
             if x < y and x * 2 == y:
+                print('hi')
                 string = 'y' + string + 'y'
             if y < x == y * 2:
                 string = 'x' + string + 'x'
