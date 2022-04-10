@@ -94,8 +94,8 @@ class Cars(object):
             if y < x:
                 if y * 2 == x:
                     x -= 2
-                a = x
-                b = y
+                a = y
+                b = x
                 c = 'y'
                 d = 'x'
             total_cars = a + b
