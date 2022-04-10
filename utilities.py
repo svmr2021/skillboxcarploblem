@@ -87,12 +87,14 @@ class Cars(object):
             c = 'x'
             d = 'y'
             if x < y:
-                if x * 2 == y:
+                if x * 2 == y:  # If number of white cars is twice bigger,
+                    # remove two cars to add them later in the two corners
                     b -= 2
                 a = x
                 b = b
             if y < x:
-                if y * 2 == x:
+                if y * 2 == x: # If number of red cars is twice bigger,
+                    # remove two cars to add them later in the two corners
                     a -= 2
                 b = a
                 a = y
@@ -100,9 +102,8 @@ class Cars(object):
                 d = 'x'
             total_cars = a + b
             string = ''
-            flag = True # If true -> print x else y
+            flag = True  # If true -> print x else y
             for i in range(0, total_cars, 1):
-
                 if flag:
                     if a > 0:
                         string += c
@@ -110,18 +111,19 @@ class Cars(object):
                         flag = False
                 else:
                     if b > 0:
-                        if a == b:
+                        if a == b: # if the same num of cars left, put them one by one
                             string += d
                             b -= 1
                             flag = True
-                        else:
-                            if b >= 2:
+                        else: # put 2 cars between another 2
+                            if b >= 2: # if 2 cars exists, put 2
                                 string += d + d
                                 b -= 2
-                            else:
+                            else: # is 1 car left, put 1
                                 string += d
                                 b -= 1
                             flag = True
+            # add previously removed 2 cars to two corners
             if x < y and x * 2 == y:
                 string = 'y' + string + 'y'
             if y < x == y * 2:
