@@ -84,8 +84,8 @@ class Cars(object):
                     return
             a = x
             b = y
-            c = 'x'
-            d = 'y'
+            c =  red_icon
+            d = white_icon
             if x < y:
                 if x * 2 == y:  # If number of white cars is twice bigger,
                     # remove two cars to add them later in the two corners
@@ -98,8 +98,8 @@ class Cars(object):
                     a -= 2
                 b = a
                 a = y
-                c = 'y'
-                d = 'x'
+                c = white_icon
+                d = red_icon
             total_cars = a + b
             string = ''
             flag = True  # If true -> print x else y
@@ -125,9 +125,9 @@ class Cars(object):
                             flag = True
             # add previously removed 2 cars to two corners
             if x < y and x * 2 == y:
-                string = 'y' + string + 'y'
+                string = white_icon + string + white_icon
             if y < x == y * 2:
-                string = 'x' + string + 'x'
+                string = red_icon+ string + red_icon
 
             if print_output:
                 print(string)
