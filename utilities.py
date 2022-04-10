@@ -1,3 +1,5 @@
+import logging
+import math
 from logging import error, info
 
 
@@ -50,7 +52,8 @@ class Cars(object):
         :return:
         """
         try:
-            if abs(x - y) > 1:
+            # We can allow twice more y cars in relation to x and vise-versa
+            if x / y > 2 or y / x > 2:
                 return False
             return True
         except Exception as e:
@@ -79,20 +82,50 @@ class Cars(object):
                 if not Cars.check_inputs(x=x, y=y):
                     print('It is not possible to place {} red , {} white cars as expected'.format(x, y))
                     return
-            total_cars = x + y
-            flag = True  # If true -> print red car, else white car
-            if x >= y:
-                string = red_icon
-                flag = False
-            else:
-                string = white_icon
-            for _ in range(1, total_cars, 1):
+            a = x
+            b = y
+            c = 'x'
+            d = 'y'
+            if x < y:
+                if x * 2 == y:
+                    y -= 2
+                a = x
+                b = y
+            if y < x:
+                if y * 2 == x:
+                    x -= 2
+                a = x
+                b = y
+                c = 'y'
+                d = 'x'
+            total_cars = a + b
+            string = ''
+            flag = True
+            for i in range(0, total_cars, 1):
                 if flag:
-                    string += red_icon
-                    flag = False
+                    if a > 0:
+                        string += c
+                        a -= 1
+                        flag = False
                 else:
-                    string += white_icon
-                    flag = True
+                    if b > 0:
+                        if a == b:
+                            string += d
+                            b -= 1
+                            flag = True
+                        else:
+                            if b >= 2:
+                                string += d + d
+                                b -= 2
+                            else:
+                                string += d
+                                b -= 1
+                            flag = True
+            if x < y and x * 2 == y:
+                string = 'y' + string + 'y'
+            if y < x == y * 2:
+                string = 'x' + string + 'x'
+
             if print_output:
                 print(string)
             return string
