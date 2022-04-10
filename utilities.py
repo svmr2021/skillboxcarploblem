@@ -122,11 +122,7 @@ class Cars(object):
                                 string += d
                                 b -= 1
                             flag = True
-            print(x<y)
-            print(y)
-            print(x*2==y)
             if x < y and x * 2 == y:
-                print('hi')
                 string = 'y' + string + 'y'
             if y < x == y * 2:
                 string = 'x' + string + 'x'
